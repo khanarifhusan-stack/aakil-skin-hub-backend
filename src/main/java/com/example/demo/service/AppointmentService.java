@@ -6,16 +6,23 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Appointment;
 import com.example.demo.repository.AppointmentRepository;
+import com.example.demo.repository.PatientRepository;
 
 @Service
 public class AppointmentService {
 
         private final AppointmentRepository appointmentRepository;
+        private final PatientRepository patientRepository;
+        private final EmailService emailService;
 
         public AppointmentService(
-                        AppointmentRepository appointmentRepository) {
+                        AppointmentRepository appointmentRepository,
+                        PatientRepository patientRepository,
+                        EmailService emailService) {
 
                 this.appointmentRepository = appointmentRepository;
+                this.patientRepository = patientRepository;
+                this.emailService = emailService;
         }
 
         // ============================================================
@@ -36,7 +43,13 @@ public class AppointmentService {
                         appointment.setStatus("Scheduled");
                 }
 
-                return appointmentRepository.save(appointment);
+                // Save appointment first
+                Appointment savedAppointment = appointmentRepository.save(appointment);
+
+                // Send email notification to doctor
+                emailService.sendAppointmentNotification(savedAppointment);
+
+                return savedAppointment;
         }
 
         // ============================================================
@@ -93,8 +106,7 @@ public class AppointmentService {
                 existingAppointment.setNotes(
                                 updatedAppointment.getNotes());
 
-                return appointmentRepository.save(
-                                existingAppointment);
+                return appointmentRepository.save(existingAppointment);
         }
 
         // ============================================================
