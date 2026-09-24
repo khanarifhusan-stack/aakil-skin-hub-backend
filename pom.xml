@@ -5,12 +5,21 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- ========================================================= -->
+    <!-- SPRING BOOT                                               -->
+    <!-- ========================================================= -->
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>4.1.1</version>
         <relativePath/>
     </parent>
+
+
+    <!-- ========================================================= -->
+    <!-- PROJECT INFORMATION                                       -->
+    <!-- ========================================================= -->
 
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
@@ -19,14 +28,25 @@
     <name>aakil-clinic-backend</name>
     <description>Aakil Skin Care Clinics Centre Backend</description>
 
+
+    <!-- ========================================================= -->
+    <!-- JAVA                                                       -->
+    <!-- ========================================================= -->
+
     <properties>
         <java.version>21</java.version>
     </properties>
 
+
+    <!-- ========================================================= -->
+    <!-- DEPENDENCIES                                               -->
+    <!-- ========================================================= -->
+
     <dependencies>
 
+
         <!-- ===================================================== -->
-        <!-- SPRING BOOT WEB / REST API                           -->
+        <!-- SPRING BOOT WEB / REST API                            -->
         <!-- ===================================================== -->
 
         <dependency>
@@ -36,7 +56,7 @@
 
 
         <!-- ===================================================== -->
-        <!-- SPRING DATA JPA / DATABASE                           -->
+        <!-- SPRING DATA JPA / DATABASE                            -->
         <!-- ===================================================== -->
 
         <dependency>
@@ -46,7 +66,7 @@
 
 
         <!-- ===================================================== -->
-        <!-- MYSQL DATABASE DRIVER                                -->
+        <!-- MYSQL DATABASE DRIVER                                 -->
         <!-- ===================================================== -->
 
         <dependency>
@@ -57,7 +77,18 @@
 
 
         <!-- ===================================================== -->
-        <!-- VALIDATION                                           -->
+        <!-- POSTGRESQL DATABASE DRIVER - RENDER                   -->
+        <!-- ===================================================== -->
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <!-- ===================================================== -->
+        <!-- VALIDATION                                             -->
         <!-- ===================================================== -->
 
         <dependency>
@@ -67,22 +98,28 @@
 
 
         <!-- ===================================================== -->
-        <!-- EMAIL / SMTP                                         -->
+        <!-- EMAIL / SMTP                                           -->
         <!-- ===================================================== -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-        <dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <scope>runtime</scope>
-</dependency>
 
 
         <!-- ===================================================== -->
-        <!-- BCrypt PASSWORD HASHING                              -->
+        <!-- TWILIO SMS OTP                                         -->
+        <!-- ===================================================== -->
+
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>13.0.1</version>
+        </dependency>
+
+
+        <!-- ===================================================== -->
+        <!-- BCRYPT PASSWORD HASHING                                -->
         <!-- ===================================================== -->
 
         <dependency>
@@ -92,7 +129,7 @@
 
 
         <!-- ===================================================== -->
-        <!-- TESTING                                               -->
+        <!-- TESTING                                                -->
         <!-- ===================================================== -->
 
         <dependency>
@@ -101,11 +138,12 @@
             <scope>test</scope>
         </dependency>
 
+
     </dependencies>
 
 
     <!-- ========================================================= -->
-    <!-- BUILD                                                     -->
+    <!-- BUILD                                                      -->
     <!-- ========================================================= -->
 
     <build>
